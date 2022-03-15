@@ -10,9 +10,9 @@ paths:
   /account/{a_id}:
     get:
       summary: Get Account Information
-      operationID: resources.account.Account.get
+      operationId: resources.account.Account.get
       tags:
-        - account information
+        - Account Information
       parameters:
         - name: a_id
           in: path
@@ -44,8 +44,8 @@ paths:
     delete:
       summary: Delete an Account
       tags:
-        - place records
-      operationID: resources.account.Account.delete
+        - Delete an Account
+      operationId: resources.account.Account.delete
       parameters:
         - name: a_id
           in: path
@@ -77,7 +77,7 @@ paths:
   /account/:
     post:
       summary: Create an Account
-      operationID: resources.account.Account.create
+      operationId: resources.account.Account.create
       tags:
         - Account Information
       requestBody:
@@ -113,65 +113,65 @@ paths:
   /account/{a_id}/settings:
     put:
       summary: Update the settings of an Account
-        operationID: resources.settings.Settings.update
-        tags:
-          - Settings
-        parameters:
-          - name: a_id
-            in: path
-            description: Account identifier
-            required: true
-            schema:
-              type: string
-          - name: verification_code
-            in: query
-            description: Verification Code
-            required: true
-            schema:
-              type: boolean
-          - name: email_pref
-            in: query
-            description: Email Preferences
-            required: true
-            schema:
-              type: boolean
-          - name: promotion_pref
-            in: query
-            description: Promotion Preferences
-            required: true
-            schema:
-              type: boolean
-          - name: invoice_pref
-            in: query
-            description: Invoice Preferences
-            required: true
-            schema:
-              type: boolean
-          - name: browser_pref
-            in: query
-            description: Browser Notifications
-            required: true
-            schema:
-              type: boolean
-        responses:
-          '200':
-            description: Settings were updated
-            content:
-              applications/json:
-                schema:
-                  $ref: '#/components/schemas/AnyMsg'
-          '404':
-            description: Account was not found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-          default:
-            description: Unexpected error
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
+      operationId: resources.settings.Settings.update
+      tags:
+        - Account Settings
+      parameters:
+        - name: a_id
+          in: path
+          description: Account identifier
+          required: true
+          schema:
+            type: string
+        - name: verification_code
+          in: query
+          description: Verification Code
+          required: true
+          schema:
+            type: boolean
+        - name: email_pref
+          in: query
+          description: Email Preferences
+          required: true
+          schema:
+            type: boolean
+        - name: promotion_pref
+          in: query
+          description: Promotion Preferences
+          required: true
+          schema:
+            type: boolean
+        - name: invoice_pref
+          in: query
+          description: Invoice Preferences
+          required: true
+          schema:
+            type: boolean
+        - name: browser_pref
+          in: query
+          description: Browser Notifications
+          required: true
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Settings were updated
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/AnyMsg'
+        '404':
+          description: Account was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
