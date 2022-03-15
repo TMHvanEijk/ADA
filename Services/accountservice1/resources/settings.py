@@ -1,4 +1,3 @@
-import datetime
 from flask import jsonify
 from daos.account_dao import AccountDAO
 from db import Session
@@ -9,6 +8,7 @@ class Settings:
                browser_pref):
         session = Session()
         account = session.query(AccountDAO).filter(AccountDAO.id == a_id)[0]
+
         account.settings.verification_code = verification_code
         account.settings.email_pref = email_pref
         account.settings.promotion_pref = promotion_pref

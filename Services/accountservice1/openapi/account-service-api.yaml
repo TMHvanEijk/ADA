@@ -1,0 +1,249 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Swagger Account Service
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:5000/v1.0
+paths:
+  /account/{a_id}:
+    get:
+      summary: Get Account Information
+      operationID: resources.account.Account.get
+      tags:
+        - account information
+      parameters:
+        - name: a_id
+          in: path
+          description: Account identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Account Information
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/AccountOut'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Error'
+
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      summary: Delete an Account
+      tags:
+        - place records
+      operationID: resources.account.Account.delete
+      parameters:
+        - name: a_id
+          in: path
+          description: Account identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Account was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyMsg'
+        '404':
+          description: Account was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /account/:
+    post:
+      summary: Create an Account
+      operationID: resources.account.Account.create
+      tags:
+        - Account Information
+      requestBody:
+        description: Account Information
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountIn'
+      responses:
+        '200':
+          description: Created an Account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_id:
+                    type: string
+                    description: The Account ID
+        '500':
+          description: An account with the same ID already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /account/{a_id}/settings:
+    put:
+      summary: Update the settings of an Account
+        operationID: resources.settings.Settings.update
+        tags:
+          - Settings
+        parameters:
+          - name: a_id
+            in: path
+            description: Account identifier
+            required: true
+            schema:
+              type: string
+          - name: verification_code
+            in: query
+            description: Verification Code
+            required: true
+            schema:
+              type: boolean
+          - name: email_pref
+            in: query
+            description: Email Preferences
+            required: true
+            schema:
+              type: boolean
+          - name: promotion_pref
+            in: query
+            description: Promotion Preferences
+            required: true
+            schema:
+              type: boolean
+          - name: invoice_pref
+            in: query
+            description: Invoice Preferences
+            required: true
+            schema:
+              type: boolean
+          - name: browser_pref
+            in: query
+            description: Browser Notifications
+            required: true
+            schema:
+              type: boolean
+        responses:
+          '200':
+            description: Settings were updated
+            content:
+              applications/json:
+                schema:
+                  $ref: '#/components/schemas/AnyMsg'
+          '404':
+            description: Account was not found
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+          default:
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    AccountIn:
+      required:
+        - customer_email
+        - customer_password
+        - customer_name
+        - customer_address
+        - customer_birth
+      properties:
+        customer_email:
+          format: string
+        customer_password:
+          format: string
+        customer_name:
+          format: string
+        customer_address:
+          format: string
+        customer_birth:
+          format: string
+    AccountOut:
+      required:
+        - id
+      properties:
+        id:
+          type: number
+        customer_email:
+          format: string
+        customer_password:
+          format: string
+        customer_name:
+          format: string
+        customer_address:
+          format: string
+        customer_birth:
+          format: string
+        settings:
+          $ref: '#/components/schemas/Settings'
+    Settings:
+      properties:
+        verification_code:
+          type: boolean
+        email_pref:
+          type: boolean
+        promotion_pref:
+          type: boolean
+        invoice_pref:
+          type: boolean
+        browser_pref:
+          type: boolean
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string
+    AnyMsg:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string
+
+
+
+
