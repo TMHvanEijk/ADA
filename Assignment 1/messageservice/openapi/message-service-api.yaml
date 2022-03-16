@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title: Swagger Delivery Service
+  title: Swagger Message Service
   license:
     name: MIT
 servers:
@@ -73,7 +73,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /deliveries/:
+  /messages/:
     post:
       summary: Create a Message
       operationId: resources.message.Message.create
@@ -93,7 +93,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  delivery_id:
+                  message_id:
                     type: string
                     description: The message ID
         '500':
