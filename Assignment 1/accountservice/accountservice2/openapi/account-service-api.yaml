@@ -16,7 +16,19 @@ paths:
       parameters:
         - name: a_id
           in: path
-          description: Account identifier
+          description: identifier
+          required: true
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Account email
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Account password
           required: true
           schema:
             type: string
@@ -49,7 +61,19 @@ paths:
       parameters:
         - name: a_id
           in: path
-          description: Account identifier
+          description: identifier
+          required: true
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Account email
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Account password
           required: true
           schema:
             type: string
@@ -119,7 +143,19 @@ paths:
       parameters:
         - name: a_id
           in: path
-          description: Account identifier
+          description: identifier
+          required: true
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Account email
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Account password
           required: true
           schema:
             type: string
@@ -173,6 +209,102 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /account/{a_id}/login:
+    put:
+      summary: Update the password
+      operationId: resources.login.Login.update
+      tags:
+        - Password Update
+      parameters:
+        - name: a_id
+          in: path
+          description: identifier
+          required: true
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Account email
+          required: true
+          schema:
+            type: string
+        - name: old_password
+          in: query
+          description: Old password
+          required: true
+          schema:
+            type: string
+        - name: new_password
+          in: query
+          description: New password
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Password was updated
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/AnyMsg'
+        '404':
+          description: Account was not found
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      summary: Get Login Credentials
+      operationId: resources.login.Login.get
+      tags:
+        - Login Credentials
+      parameters:
+        - name: a_id
+          in: path
+          description: identifier
+          required: true
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Account email
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Account password
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Login Credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginOut'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+
 components:
   schemas:
     AccountIn:
@@ -195,10 +327,16 @@ components:
           format: string
     AccountOut:
       required:
-        - id
+        - a_id
+        - email
+        - password
       properties:
-        id:
-          type: number
+        a_id:
+          type: integer
+        email:
+          type: string
+        password:
+          type: string
         customer_email:
           format: string
         customer_password:
@@ -211,6 +349,8 @@ components:
           format: string
         settings:
           $ref: '#/components/schemas/Settings'
+        login:
+          $ref: '#/components/schemas/LoginOut'
     Settings:
       properties:
         verification_code:
@@ -223,6 +363,15 @@ components:
           type: boolean
         browser_pref:
           type: boolean
+    LoginOut:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
     Error:
       required:
         - code
