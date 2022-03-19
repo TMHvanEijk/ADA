@@ -162,7 +162,7 @@ components:
           format: string
         context:
           format: string
-        received_time:
+        send_time:
           format: string
     MessageOut:
       required:

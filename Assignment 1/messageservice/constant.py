@@ -1,4 +1,4 @@
 STATUS_RECEIVED = "Received"
 STATUS_SEND = "Send"
 STATUS_CANCELED = "Canceled"
-STATUS_DELIVERING = "Sending"
+STATUS_SENDING = "Sending"

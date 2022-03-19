@@ -18,10 +18,9 @@ class MessageDAO(Base):
     # https: // docs.sqlalchemy.org / en / 14 / orm / backref.html
     status = relationship(StatusDAO.__name__, backref=backref("message", uselist=False))
 
-    def __init__(self, receiver_id, sender_id, context, send_time, received_time, status):
+    def __init__(self, receiver_id, sender_id, context, send_time, status):
         self.receiver_id = receiver_id
         self.sender_id = sender_id
         self.context = context
         self.send_time = send_time
-        self.received_time = received_time
         self.status = status
