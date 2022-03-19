@@ -14,7 +14,7 @@ class Message:
         session = Session()
         message = MessageDAO(body['receiver_id'], body['sender_id'], body['context'], datetime.now(),
                                datetime.strptime(body['received_time'], '%Y-%m-%d %H:%M:%S.%f'),
-                               StatusDAO(STATUS_CREATED, datetime.now()))
+                               StatusDAO(STATUS_SEND, datetime.now()))
         session.add(message)
         session.commit()
         session.refresh(message)
