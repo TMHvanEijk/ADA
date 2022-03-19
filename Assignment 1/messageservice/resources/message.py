@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import jsonify
 
-from constant import STATUS_CREATED
+from constant import STATUS_SEND
 from daos.message_dao import MessageDAO
 from daos.status_dao import StatusDAO
 from db import Session
