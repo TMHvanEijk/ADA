@@ -154,13 +154,13 @@ components:
       required:
         - receiver_id
         - sender_id
-        - service_id
+        - context
       properties:
         receiver_id:
           format: string
         sender_id:
           format: string
-        service_id:
+        context:
           format: string
         received_time:
           format: string
@@ -174,7 +174,7 @@ components:
           format: string
         sender_id:
           format: string
-        service_id:
+        context:
           format: string
         status:
           $ref: "#/components/schemas/Status"

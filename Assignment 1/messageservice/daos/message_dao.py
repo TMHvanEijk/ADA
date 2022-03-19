@@ -9,7 +9,7 @@ class MessageDAO(Base):
     id = Column(Integer, primary_key=True)  # Auto generated primary key
     receiver_id = Column(String)
     sender_id = Column(String)
-    service_id = Column(String)
+    context = Column(String)
     send_time = Column(DateTime)
     received_time = Column(DateTime)
     # reference to status as foreign key relationship. This will be automatically assigned.
@@ -18,10 +18,10 @@ class MessageDAO(Base):
     # https: // docs.sqlalchemy.org / en / 14 / orm / backref.html
     status = relationship(StatusDAO.__name__, backref=backref("message", uselist=False))
 
-    def __init__(self, receiver_id, sender_id, service_id, send_time, received_time, status):
+    def __init__(self, receiver_id, sender_id, context, send_time, received_time, status):
         self.receiver_id = receiver_id
         self.sender_id = sender_id
-        self.service_id = service_id
+        self.context = context
         self.send_time = send_time
         self.received_time = received_time
         self.status = status

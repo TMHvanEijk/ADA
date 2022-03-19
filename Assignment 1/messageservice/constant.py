@@ -1,4 +1,4 @@
-STATUS_DELIVERED = "Delivered"
-STATUS_CREATED = "Created"
+STATUS_RECEIVED = "Received"
+STATUS_SEND = "Send"
 STATUS_CANCELED = "Canceled"
-STATUS_DELIVERING = "Delivering"
+STATUS_DELIVERING = "Sending"
