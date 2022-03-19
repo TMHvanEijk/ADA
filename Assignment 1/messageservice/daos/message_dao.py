@@ -11,7 +11,6 @@ class MessageDAO(Base):
     sender_id = Column(String)
     context = Column(String)
     send_time = Column(DateTime)
-    received_time = Column(DateTime)
     # reference to status as foreign key relationship. This will be automatically assigned.
     status_id = Column(Integer, ForeignKey('status.id'))
     # https: // docs.sqlalchemy.org / en / 14 / orm / basic_relationships.html
