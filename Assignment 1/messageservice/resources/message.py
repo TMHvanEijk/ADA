@@ -12,7 +12,7 @@ class Message:
     @staticmethod
     def create(body):
         session = Session()
-        message = MessageDAO(body['receiver_id'], body['sender_id'], body['context'], datetime.now(),
+        message = MessageDAO(body['receiver_id'], body['sender_id'], body['context'],
                                datetime.strptime(body['send_time'], '%Y-%m-%d %H:%M:%S.%f'),
                                StatusDAO(STATUS_SEND, datetime.now()))
         session.add(message)
