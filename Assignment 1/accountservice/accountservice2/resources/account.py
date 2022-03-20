@@ -4,6 +4,7 @@ from flask import jsonify
 
 from daos.account_dao import AccountDAO
 from daos.settings_dao import SettingsDAO
+from daos.login_dao import LoginDAO
 from db import Session
 
 class Account:
@@ -11,7 +12,7 @@ class Account:
     def create(body):
         session = Session()
         account = AccountDAO(body['customer_email'], body['customer_password'], body['customer_name'], body['customer_address'],
-                             body['customer_birth'], SettingsDAO(True,True,True,True,True))
+                             body['customer_birth'], SettingsDAO(True,True,True,True,True), LoginDAO(body['customer_email'], body['customer_password']))
         session.add(account)
         session.commit()
         session.refresh(account)
@@ -19,16 +20,14 @@ class Account:
         return jsonify({'account_id':account.id}), 200
 
     @staticmethod
-    def get(a_id):
+    def get(a_id, email, password):
         session = Session()
-        account = session.query(AccountDAO).filter(AccountDAO.id == a_id).first()
+        account = session.query(AccountDAO).filter((AccountDAO.customer_email == email) & (AccountDAO.customer_password == password)).first()
 
         if account:
             settings_obj = account.settings
 
             text_out = {
-                "customer_email": account.customer_email,
-                "customer_password": account.customer_password,
                 "customer_name": account.customer_name,
                 "customer_address": account.customer_address,
                 "customer_birth": account.customer_birth,
@@ -48,9 +47,10 @@ class Account:
             return jsonify({"message": f"No account with email {email} was found or the password is incorrect"}), 404
 
     @staticmethod
-    def delete(a_id):
+    def delete(a_id, email, password):
         session = Session()
-        effected_rows = session.query(AccountDAO).filter(AccountDAO.id == a_id).delete()
+        effected_rows = session.query(AccountDAO).filter((AccountDAO.customer_email == email) & (AccountDAO.customer_password == password)).delete()
+        #effected_rows = session.query(AccountDAO).filter(AccountDAO.id == a_id).delete()
         session.commit()
         session.close()
         if effected_rows == 0:

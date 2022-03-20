@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import jsonify
 
-from constant import STATUS_CREATED
+from constant import STATUS_SEND
 from daos.message_dao import MessageDAO
 from daos.status_dao import StatusDAO
 from db import Session
@@ -12,9 +12,9 @@ class Message:
     @staticmethod
     def create(body):
         session = Session()
-        message = MessageDAO(body['receiver_id'], body['sender_id'], body['service_id'], datetime.now(),
-                               datetime.strptime(body['received_time'], '%Y-%m-%d %H:%M:%S.%f'),
-                               StatusDAO(STATUS_CREATED, datetime.now()))
+        message = MessageDAO(body['receiver_id'], body['sender_id'], body['context'],
+                               datetime.strptime(body['send_time'], '%Y-%m-%d %H:%M:%S.%f'),
+                               StatusDAO(STATUS_SEND, datetime.now()))
         session.add(message)
         session.commit()
         session.refresh(message)
@@ -33,9 +33,8 @@ class Message:
             text_out = {
                 "receiver_id:": message.receiver_id,
                 "sender_id": message.sender_id,
-                "service_id": message.service_id,
+                "context": message.context,
                 "send_time": message.send_time.isoformat(),
-                "received_time": message.received_time.isoformat(),
                 "status": {
                     "status": status_obj.status,
                     "last_update": status_obj.last_update.isoformat(),
