@@ -214,81 +214,81 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/Error"
-    /bids/:
-      post:
-        summary: Create a Bid
-        operationId: resources.bid.Bid.create
-        tags:
-          - Bid records
-        requestBody:
-          description: Bid Information
+  /bids/:
+    post:
+      summary: Create a Bid
+      operationId: resources.bid.Bid.create
+      tags:
+        - Bid records
+      requestBody:
+        description: Bid Information
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BidIn"
+      responses:
+        '200':
+          description: Created Bid Record
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BidIn"
-        responses:
-          '200':
-            description: Created Bid Record
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    bid_id:
-                      type: string
-                      description: The Bid ID
-          '500':
-            description: Record with the same name already exists
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Error"
-          default:
-            description: unexpected error
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Error"
+                type: object
+                properties:
+                  bid_id:
+                    type: string
+                    description: The Bid ID
+        '500':
+          description: Record with the same name already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
-    /bids/{b_id}/status:
-      put:
-        summary: Update the status of a Bid
-        operationId: resources.bid_status.BidStatus.update
-        tags:
-          - Bid records
-        parameters:
-          - name: b_id
-            in: path
-            description: Bid identifier
-            required: true
-            schema:
-              type: string
-          - name: status
-            in: query
-            description: Bid status
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: Status was updated
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/AnyMsg"
-          '404':
-            description: Place record not found
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Error"
+  /bids/{b_id}/status:
+    put:
+      summary: Update the status of a Bid
+      operationId: resources.bid_status.BidStatus.update
+      tags:
+        - Bid records
+      parameters:
+        - name: b_id
+          in: path
+          description: Bid identifier
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Bid status
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnyMsg"
+        '404':
+          description: Place record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
-          default:
-            description: Unexpected error
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     AuctionIn:
