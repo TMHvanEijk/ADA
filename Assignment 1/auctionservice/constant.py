@@ -1,4 +1,0 @@
-STATUS_SOLD = "Sold"
-STATUS_SALE = "Sale"
-STATUS_CANCELED = "Canceled"
-STATUS_RESERVED = "Reserved"
