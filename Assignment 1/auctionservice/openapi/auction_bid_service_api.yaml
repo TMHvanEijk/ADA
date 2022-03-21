@@ -211,7 +211,7 @@ paths:
       summary: Create a Bid
       operationId: resources.bid.Bid.create
       tags:
-        - Bid records
+        - bid records
       requestBody:
         description: Bid Information
         content:
@@ -324,7 +324,7 @@ components:
         bid_amount:
           format: float
         auction:
-          format: string
+          format: integer
     BidOut:
       required:
         - id
@@ -336,7 +336,7 @@ components:
         bid_amount:
           format: float
         auction:
-          format: string
+          format: integer
         status:
           $ref: '#/components/schemas/BidStatus'
     BidStatus:
