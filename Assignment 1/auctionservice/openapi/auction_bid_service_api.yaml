@@ -317,13 +317,13 @@ components:
       required:
         - buyer_id
         - bid_amount
-        - auction
+        - auction_id
       properties:
         buyer_id:
           format: string
         bid_amount:
           format: float
-        auction:
+        auction_id:
           format: integer
     BidOut:
       required:
@@ -335,7 +335,7 @@ components:
           format: string
         bid_amount:
           format: float
-        auction:
+        auction_id:
           format: integer
         status:
           $ref: '#/components/schemas/BidStatus'
