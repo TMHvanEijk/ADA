@@ -2,9 +2,9 @@ from datetime import datetime
 
 from flask import jsonify
 
-from constant import STATUS_CREATED
-from daos.delivery_dao import AuctionDAO
-from daos.status_dao import AuctionStatusDAO
+from constant import STATUS_SALE
+from daos.listing_dao import AuctionDAO
+from daos.listing_status_dao import AuctionStatusDAO
 from db import Session
 
 
@@ -13,7 +13,7 @@ class Listing:
     def create(body):
         session = Session()
         auction = AuctionDAO(body['seller_id'], body['category_id'], body['starting_price'],
-                               AuctionStatusDAO(STATUS_CREATED, datetime.now()))
+                               AuctionStatusDAO(STATUS_SALE, datetime.now()))
         session.add(auction)
         session.commit()
         session.refresh(auction)

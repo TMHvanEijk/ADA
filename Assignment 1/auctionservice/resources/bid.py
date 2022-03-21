@@ -3,8 +3,8 @@ from datetime import datetime
 from flask import jsonify
 
 from constant import STATUS_CREATED
-from daos.delivery_dao import BidDAO
-from daos.status_dao import BidStatusDAO
+from daos.bid_dao import BidDAO
+from daos.bid_status_dao import BidStatusDAO
 from db import Session
 
 

@@ -5,7 +5,7 @@ info:
   license:
     name: MIT
 servers:
-  - url: 'http://localhost:5000/v1.0'
+  - url: http://localhost:5000/v1.0
 paths:
   '/auctions/{a_id}':
     get:
@@ -19,7 +19,7 @@ paths:
           description: Auction identifier
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: Auction Record
@@ -50,7 +50,7 @@ paths:
           description: Auction Record identifier
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: Record was deleted
@@ -91,7 +91,7 @@ paths:
                 type: object
                 properties:
                   auction_id:
-                    type: string
+                    type: integer
                     description: The auction ID
         '500':
           description: Record with the same name already exists
@@ -117,7 +117,7 @@ paths:
           description: Auction identifier
           required: true
           schema:
-            type: string
+            type: integer
         - name: status
           in: query
           description: Auction status
@@ -155,7 +155,7 @@ paths:
           description: Bid identifier
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: Bid Record
@@ -186,7 +186,7 @@ paths:
           description: Bid Record identifier
           required: true
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: Record was deleted
@@ -227,7 +227,7 @@ paths:
                 type: object
                 properties:
                   bid_id:
-                    type: string
+                    type: integer
                     description: The Bid ID
         '500':
           description: Record with the same name already exists
@@ -253,7 +253,7 @@ paths:
           description: Bid identifier
           required: true
           schema:
-            type: string
+            type: integer
         - name: status
           in: query
           description: Bid status
@@ -298,7 +298,7 @@ components:
         - id
       properties:
         id:
-          type: number
+          type: integer
         seller_id:
           format: string
         category_id:
@@ -325,26 +325,26 @@ components:
           format: float
         auction:
           format: string
-      BidOut:
-        required:
-          - id
-        properties:
-          id:
-            type: number
-          buyer_id:
-            format: string
-          bid_amount:
-            format: float
-          auction:
-            format: string
-          status:
-            $ref: '#/components/schemas/BidStatus'
-      BidStatus:
-        properties:
-          status:
-            type: string
-          last_update:
-            type: string
+    BidOut:
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+        buyer_id:
+          format: string
+        bid_amount:
+          format: float
+        auction:
+          format: string
+        status:
+          $ref: '#/components/schemas/BidStatus'
+    BidStatus:
+      properties:
+        status:
+          type: string
+        last_update:
+          type: string
     Error:
       required:
         - code
