@@ -12,7 +12,7 @@ paths:
       summary: Get a Message Record
       operationId: resources.message.Message.get
       tags:
-        - message record
+        - Get a Message Record
       parameters:
         - name: d_id
           in: path
@@ -44,7 +44,7 @@ paths:
     delete:
       summary: Delete a Message Record
       tags:
-        - place records
+        - Delete a Message Record
       operationId: resources.message.Message.delete
       parameters:
         - name: d_id
@@ -78,7 +78,7 @@ paths:
       summary: Create a Message
       operationId: resources.message.Message.create
       tags:
-        - Message records
+        - Create a Message
       requestBody:
         description: Message Information
         content:
@@ -114,7 +114,7 @@ paths:
       summary: Update the status of a Message
       operationId: resources.status.Status.update
       tags:
-        - Message records
+        - Update the status of a Message
       parameters:
         - name: d_id
           in: path
