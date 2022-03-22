@@ -3,7 +3,7 @@ from resources.db_util import DBUtil
 
 def store_history(request):
 	request_json = request.get_json(silent=True)
-    request_args = request.args
+    request_args = request.args.get()
 	if request and 'arg1' in request_json:
         arg1 = request_json['arg1']
     elif request_args and 'arg1' in request_args:
