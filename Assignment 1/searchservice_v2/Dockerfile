@@ -11,6 +11,7 @@ COPY . .
 # Expose the port that our app runs in
 EXPOSE 5000
 # Enviroment Variables
+ENV DB_BUCKET=database_bucket_ada
 ENV DB_URL=sqlite:///search.db
 # Run our App
 CMD ["python3","app.py"]
