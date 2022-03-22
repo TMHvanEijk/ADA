@@ -9,7 +9,7 @@ def store_history(request):
 	elif request_args and 'arg1' in request_args:
 		arg1 = request_args['arg1']
 	else:
-		continue
-	db_util = DBUtil()
-	search = arg1
-	db_util.add_data_records('history-db', search)
+		arg1 = 'Invalid search'
+	if arg1 != 'Invalid search':
+		db_util = DBUtil()
+		db_util.add_data_records('history-db', arg1)
