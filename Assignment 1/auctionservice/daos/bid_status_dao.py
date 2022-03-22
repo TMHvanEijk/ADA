@@ -6,7 +6,7 @@ from db import Base
 class BidStatusDAO(Base):
     __tablename__ = 'bidstatus'
 
-    id = Column(Integer, primary_key=True) # Auto generated primary key
+    id = Column(Integer, primary_key=True)
     status = Column(String)
     last_update = Column(TIMESTAMP(timezone=False))
 

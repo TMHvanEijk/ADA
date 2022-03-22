@@ -12,7 +12,7 @@ paths:
       summary: Get a Auction Record
       operationId: resources.listing.Listing.get
       tags:
-        - auction record
+        - Auction Record
       parameters:
         - name: a_id
           in: path
@@ -42,7 +42,7 @@ paths:
     delete:
       summary: Delete a Auction Record
       tags:
-        - place records
+        - Auction Record
       operationId: resources.listing.Listing.delete
       parameters:
         - name: a_id
@@ -72,10 +72,10 @@ paths:
                 $ref: '#/components/schemas/Error'
   /auctions/:
     post:
-      summary: Create a Auction
+      summary: Create a Auction Record
       operationId: resources.listing.Listing.create
       tags:
-        - Auction records
+        - Auction Record
       requestBody:
         description: Auction Information
         content:
@@ -107,10 +107,10 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/auctions/{a_id}/status':
     put:
-      summary: Update the status of a Auction
+      summary: Update the status of a Auction Record
       operationId: resources.listing_status.ListingStatus.update
       tags:
-        - Auction records
+        - Auction Record
       parameters:
         - name: a_id
           in: path
@@ -148,7 +148,7 @@ paths:
       summary: Get a Bid Record
       operationId: resources.bid.Bid.get
       tags:
-        - bid record
+        - Bid Record
       parameters:
         - name: b_id
           in: path
@@ -178,7 +178,7 @@ paths:
     delete:
       summary: Delete a Bid Record
       tags:
-        - place records
+        - Bid Record
       operationId: resources.bid.Bid.delete
       parameters:
         - name: b_id
@@ -208,10 +208,10 @@ paths:
                 $ref: '#/components/schemas/Error'
   /bids/:
     post:
-      summary: Create a Bid
+      summary: Create a Bid Record
       operationId: resources.bid.Bid.create
       tags:
-        - bid records
+        - Bid Record
       requestBody:
         description: Bid Information
         content:
@@ -243,10 +243,10 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/bids/{b_id}/status':
     put:
-      summary: Update the status of a Bid
+      summary: Update the status of a Bid Record
       operationId: resources.bid_status.BidStatus.update
       tags:
-        - Bid records
+        - Bid Record
       parameters:
         - name: b_id
           in: path
