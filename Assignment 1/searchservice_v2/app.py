@@ -1,5 +1,4 @@
 from flask import Flask, json , request, Response
-from store_history import store_history
 import requests
 
 from resources.db_util import DBUtil
