@@ -7,7 +7,7 @@ from db import Base
 
 class AuctionDAO(Base):
     __tablename__ = 'auction'
-    id = Column(Integer, primary_key=True)  # Auto generated primary key
+    id = Column(Integer, primary_key=True)
     seller_id = Column(String)
     category_id = Column(String)
     starting_price = Column(Float)
