@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy as db
 from sqlalchemy import Column, Float, Table, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from google.cloud import storage
+# from google.cloud import storage
 
 
 class DBUtil:
