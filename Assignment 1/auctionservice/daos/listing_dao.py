@@ -1,7 +1,7 @@
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Float
 from sqlalchemy.orm import relationship, backref
 
-from daos.status_dao import AuctionStatusDAO
+from daos.listing_status_dao import AuctionStatusDAO
 from db import Base
 
 
@@ -12,7 +12,7 @@ class AuctionDAO(Base):
     category_id = Column(String)
     starting_price = Column(Float)
 
-    status_id = Column(Integer, ForeignKey('status.id'))
+    status_id = Column(Integer, ForeignKey('auctionstatus.id'))
     status = relationship(AuctionStatusDAO.__name__, backref=backref("auction", uselist=False))
 
     def __init__(self, seller_id, category_id, starting_price, status):

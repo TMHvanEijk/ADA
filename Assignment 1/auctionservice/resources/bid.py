@@ -3,8 +3,8 @@ from datetime import datetime
 from flask import jsonify
 
 from constant import STATUS_CREATED
-from daos.delivery_dao import BidDAO
-from daos.status_dao import BidStatusDAO
+from daos.bid_dao import BidDAO
+from daos.bid_status_dao import BidStatusDAO
 from db import Session
 
 
@@ -12,7 +12,7 @@ class Bid:
     @staticmethod
     def create(body):
         session = Session()
-        bid = BidDAO(body['buyer_id'], body['bid_amount'], body['auction'],
+        bid = BidDAO(body['buyer_id'], body['bid_amount'], body['auction_id'],
                                BidStatusDAO(STATUS_CREATED, datetime.now()))
         session.add(bid)
         session.commit()
@@ -30,7 +30,7 @@ class Bid:
             text_out = {
                 "buyer_id:": bid.buyer_id,
                 "bid_amount": bid.bid_amount,
-                "auction": bid.auction,
+                "auction_id": bid.auction_id,
                 "status": {
                     "status": status_obj.status,
                     "last_update": status_obj.last_update.isoformat(),

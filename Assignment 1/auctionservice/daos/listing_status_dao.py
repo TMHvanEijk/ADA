@@ -4,7 +4,7 @@ from db import Base
 
 
 class AuctionStatusDAO(Base):
-    __tablename__ = 'status'
+    __tablename__ = 'auctionstatus'
 
     id = Column(Integer, primary_key=True) # Auto generated primary key
     status = Column(String)

@@ -20,7 +20,7 @@ class Account:
         return jsonify({'account_id':account.id}), 200
 
     @staticmethod
-    def get(a_id, email, password):
+    def get(email, password):
         session = Session()
         account = session.query(AccountDAO).filter((AccountDAO.customer_email == email) & (AccountDAO.customer_password == password)).first()
 
@@ -42,15 +42,17 @@ class Account:
             session.close()
             return jsonify(text_out), 200
 
+        elif session.query(AccountDAO).filter(AccountDAO.customer_email == email).first():
+            session.close()
+            return jsonify({"message": f"The password is incorrect for {email}."}), 404
         else:
             session.close()
-            return jsonify({"message": f"No account with email {email} was found or the password is incorrect"}), 404
+            return jsonify({"message": f"No account with email {email} exists."}), 404
 
     @staticmethod
-    def delete(a_id, email, password):
+    def delete(email, password):
         session = Session()
         effected_rows = session.query(AccountDAO).filter((AccountDAO.customer_email == email) & (AccountDAO.customer_password == password)).delete()
-        #effected_rows = session.query(AccountDAO).filter(AccountDAO.id == a_id).delete()
         session.commit()
         session.close()
         if effected_rows == 0:

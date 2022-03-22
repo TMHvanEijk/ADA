@@ -4,7 +4,7 @@ from db import Session
 
 class Settings:
     @staticmethod
-    def update(a_id, email, password, verification_code, email_pref, promotion_pref, invoice_pref,
+    def update(email, password, verification_code, email_pref, promotion_pref, invoice_pref,
                browser_pref):
         session = Session()
         #account = session.query(AccountDAO).filter((AccountDAO.customer_email == email) & (AccountDAO.customer_password == password))[0]

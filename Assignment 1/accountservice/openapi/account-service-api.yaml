@@ -5,21 +5,16 @@ info:
   license:
     name: MIT
 servers:
-  - url: http://localhost:5000/v1.0
+  - url: http://localhost:5001/v1.0
 paths:
-  /account/{a_id}:
+
+  /account/:
     get:
       summary: Get Account Information
       operationId: resources.account.Account.get
       tags:
-        - Account Information
+        - Account
       parameters:
-        - name: a_id
-          in: path
-          description: identifier
-          required: true
-          schema:
-            type: integer
         - name: email
           in: query
           description: Account email
@@ -52,19 +47,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
     delete:
       summary: Delete an Account
       tags:
-        - Delete an Account
+        - Account
       operationId: resources.account.Account.delete
       parameters:
-        - name: a_id
-          in: path
-          description: identifier
-          required: true
-          schema:
-            type: integer
         - name: email
           in: query
           description: Account email
@@ -98,12 +86,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
-  /account/:
     post:
       summary: Create an Account
       operationId: resources.account.Account.create
       tags:
-        - Account Information
+        - Account
       requestBody:
         description: Account Information
         content:
@@ -134,19 +121,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
-  /account/{a_id}/settings:
+  /account/settings/:
     put:
       summary: Update the settings of an Account
       operationId: resources.settings.Settings.update
       tags:
         - Account Settings
       parameters:
-        - name: a_id
-          in: path
-          description: identifier
-          required: true
-          schema:
-            type: integer
         - name: email
           in: query
           description: Account email
@@ -209,19 +190,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
-  /account/{a_id}/login:
+  /account/login/:
     put:
       summary: Update the password
       operationId: resources.login.Login.update
       tags:
-        - Password Update
+        - Account Settings
       parameters:
-        - name: a_id
-          in: path
-          description: identifier
-          required: true
-          schema:
-            type: integer
         - name: email
           in: query
           description: Account email
@@ -259,9 +234,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /account/{a_id}/forgot_pswd:
     get:
-      summary: Get Login Credentials
-      operationId: resources.login.Login.get
+      summary: Forgot Password
+      operationId: resources.login.Login.get_password
       tags:
         - Login Credentials
       parameters:
@@ -277,19 +253,13 @@ paths:
           required: true
           schema:
             type: string
-        - name: password
-          in: query
-          description: Account password
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: Login Credentials
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginOut'
+                $ref: '#/components/schemas/LoginEmail'
         '404':
           description: Account not found
           content:
@@ -302,7 +272,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
+  /account/{a_id}/forgot_email:
+    get:
+          summary: Forgot Email
+          operationId: resources.login.Login.get_email
+          tags:
+            - Login Credentials
+          parameters:
+            - name: a_id
+              in: path
+              description: identifier
+              required: true
+              schema:
+                type: integer
+            - name: password
+              in: query
+              description: Account password
+              required: true
+              schema:
+                type: string
+          responses:
+            '200':
+              description: Login Credentials
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/LoginPassword'
+            '404':
+              description: Account not found
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Error'
+            default:
+              description: Unexpected Error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Error'
 
 
 components:
@@ -316,7 +323,7 @@ components:
         - customer_birth
       properties:
         customer_email:
-          format: string
+          format: email
         customer_password:
           format: string
         customer_name:
@@ -324,7 +331,7 @@ components:
         customer_address:
           format: string
         customer_birth:
-          format: string
+          format: date
     AccountOut:
       required:
         - a_id
@@ -363,6 +370,18 @@ components:
           type: boolean
         browser_pref:
           type: boolean
+    LoginEmail:
+      required:
+        - email
+      properties:
+        email:
+          type: string
+    LoginPassword:
+      required:
+        - password
+      properties:
+        password:
+          type: string
     LoginOut:
       required:
         - email
