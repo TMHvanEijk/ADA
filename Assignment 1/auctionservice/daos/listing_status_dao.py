@@ -6,7 +6,7 @@ from db import Base
 class AuctionStatusDAO(Base):
     __tablename__ = 'auctionstatus'
 
-    id = Column(Integer, primary_key=True) # Auto generated primary key
+    id = Column(Integer, primary_key=True)
     status = Column(String)
     last_update = Column(TIMESTAMP(timezone=False))
 

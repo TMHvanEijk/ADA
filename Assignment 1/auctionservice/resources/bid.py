@@ -11,6 +11,7 @@ from db import Session
 class Bid:
     @staticmethod
     def create(body):
+        #if a bid is created it should also message the seller of the auction
         session = Session()
         bid = BidDAO(body['buyer_id'], body['bid_amount'], body['auction_id'],
                                BidStatusDAO(STATUS_CREATED, datetime.now()))

@@ -8,10 +8,9 @@ from db import Base
 
 class BidDAO(Base):
     __tablename__ = 'bid'
-    id = Column(Integer, primary_key=True)  # Auto generated primary key
+    id = Column(Integer, primary_key=True)
     buyer_id = Column(String)
     bid_amount = Column(Float)
-
     auction_id = Column(Integer)
 
     status_id = Column(Integer, ForeignKey('bidstatus.id'))
