@@ -13,7 +13,7 @@ class DBUtil:
         if 'DB_URL' in os.environ:
             db_url = os.environ['DB_URL']
         else:
-            db_url = 'sqlite:///features.db'
+            db_url = 'sqlite:///search.db'
         # create the database
         self.engine = db.create_engine(db_url, echo=True)
         self._reflect()
