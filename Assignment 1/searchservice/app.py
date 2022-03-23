@@ -1,5 +1,4 @@
 from flask import Flask, json , request, Response
-from store_history import store_history
 import requests
 
 from resources.db_util import DBUtil
@@ -38,11 +37,12 @@ def read_data(search):
         df = db_util.read_data_records('history_db', search)
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
     else:
+        requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
         df = db_util.read_data_records('search_db', search)
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
-        requests.post('https://us-central1-ada1search.cloudfunctions.net/store_history?arg1={}'.format(search))
+        # requests.post(f'https://us-central1-ada-search-service.cloudfunctions.net/update_history?search={search}')
         # store_history(search)
     return resp
 
 
-app.run(host='0.0.0.0', port=5001)
+app.run(host='0.0.0.0', port=5000)
