@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e8c4496-3a74-40a8-ad24-67f0d85f571b" name="Changes" comment="Changing tag names" />
+    <list default="true" id="8e8c4496-3a74-40a8-ad24-67f0d85f571b" name="Changes" comment="Comment over services toegevoegd" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +75,7 @@
       <workItem from="1647430229709" duration="39000" />
       <workItem from="1647430333742" duration="5904000" />
       <workItem from="1647721621690" duration="4949000" />
-      <workItem from="1647856503933" duration="2489000" />
+      <workItem from="1647856503933" duration="2798000" />
     </task>
     <task id="LOCAL-00001" summary="Changes to message service">
       <created>1647459755823</created>
@@ -147,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647954466516</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Comment over services toegevoegd">
+      <created>1648039839079</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1648039839079</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +181,8 @@
     <MESSAGE value="received_time removed" />
     <MESSAGE value="date.time.now() removed again" />
     <MESSAGE value="Changing tag names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing tag names" />
+    <MESSAGE value="Comment over services toegevoegd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment over services toegevoegd" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/messageservice$messageservice.coverage" NAME="messageservice Coverage Results" MODIFIED="1647456881815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
