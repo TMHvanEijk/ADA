@@ -27,7 +27,7 @@ def read_data(search):
 
     if len(df) >= 1:
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
-        if search == 'history':
+        if search != 'history':
             requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
     else:
         resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200
