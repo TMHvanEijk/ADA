@@ -15,19 +15,22 @@ def read_data(search):
     credentials = service_account.Credentials.from_service_account_file("CREDENTIALS.json")
     client = bigquery.Client(credentials=credentials)
 
+    # The search history should be connected to the account domain, only history for your account is stored
     if search == 'history':
         query = f""" SELECT * FROM `ada-search-service.searchhistory_db.search_history`"""
+    # This query should query the auction database not the current placeholder 
     else:
         query = f""" SELECT * FROM `ada-search-service.searchhistory_db.auctions` WHERE category = '{search}'"""
-        requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
 
 
     df = client.query(query).to_dataframe()
 
     if len(df) >= 1:
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
+        if search == 'history':
+            requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
     else:
-        resp = json.dumps({'message': 'No data found for search_term: {}'.format(search)}, sort_keys=False, indent=4), 200
+        resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200
 
     return resp
 
