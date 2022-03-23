@@ -12,7 +12,7 @@ def update_history(request):
     if 'search' in request_json:
         new_search = request_json['search']
 
-        rows_to_insert = {'search':new_search}
+        rows_to_insert = [{'search':new_search}]
         errors = client.insert_rows_json(table_id, rows_to_insert, row_ids=[None] * len(rows_to_insert))
 
         if errors != []:
