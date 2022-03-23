@@ -3,6 +3,8 @@ def update_history(request):
     from flask import abort
     from google.cloud import bigquery
 
+    client = bigquery.Client()
+
     table_id = "ada-search-service.searchhistory_db.search_history"
 
     request_json = request.get_json(silent=True)
