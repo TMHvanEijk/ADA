@@ -21,4 +21,4 @@ def update_history(request):
             return json.dumps({'message': 'a search was added'}, sort_keys=False, indent=4), 200
 
     else:
-        return json.dumps({'message': 'a search could not be added'}, sort_keys=False, indent=4), 400
+        return json.dumps({'message': 'a search could not be added'}, sort_keys=False, indent=4), 200
