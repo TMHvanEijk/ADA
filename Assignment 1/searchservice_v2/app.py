@@ -15,7 +15,7 @@ def read_data(search):
     credentials = service_account.Credentials.from_service_account_file("CREDENTIALS.json")
     client = bigquery.Client(credentials=credentials)
 
-    # The search history should be connected to the account domain, only history for your account is stored
+    # The search history should be connected to the account domain, history is stored for you account
     if search == 'history':
         query = f""" SELECT * FROM `ada-search-service.searchhistory_db.search_history`"""
     # This query should query the auction database not the current placeholder 
