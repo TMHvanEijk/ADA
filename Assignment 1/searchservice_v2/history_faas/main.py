@@ -1,6 +1,6 @@
 
 def update_history(request):
-    from flask import abort
+    from flask import abort, json
     from google.cloud import bigquery
 
     client = bigquery.Client()
