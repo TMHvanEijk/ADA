@@ -11,7 +11,7 @@ def update_history(request):
     args = request.args
 
 
-    if 'search' in request_json:
+    if request_json and'search' in request_json:
         new_search = request_json['search']
 
         rows_to_insert = [{'search':new_search}]
@@ -21,7 +21,7 @@ def update_history(request):
             return abort(405)
         else:
             return json.dumps({'message': 'a search was added'}, sort_keys=False, indent=4), 200
-    if 'search' in args:
+    if args and 'search' in args:
         new_search = args['search']
 
         rows_to_insert = [{'search':new_search}]
