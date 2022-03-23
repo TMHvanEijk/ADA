@@ -48,11 +48,11 @@ the messageserviceopenapi is there to create, view, delete and, update message
 		
 - searchservice
 the search service is here to be able to search the auctions and store the search history
-	-resources
-		utility for the database inside of the docker container where for now the auction database is stored. Next this will be connected to the auctionservice
 	-app.py
-		This is used to create, fill, search the auction database through an API. From the GET, i.e. search, the http request is posted to the google cloud function.
+		This is to GET, i.e. search, in the auction bigquery. From here the search is posted to the google cloud function to trigger the http, which in turn stores the search in the dearch_history.
 	-Dockerfile
 		defenition of the image to build
 	-history_faas
 		The function that is used by the google cloud to store the search history in bigquery upon a http request.
+	-CREDENTIALS
+		This file is missing from the github as we don't like to share credentials. It is however used to connect to the bigquery.
