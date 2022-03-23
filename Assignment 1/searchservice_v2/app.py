@@ -33,22 +33,27 @@ def update_data(table_name):
 
 @app.route('/searchservice/<search>', methods=['GET'])
 def read_data(search):
-    client = bigquery.Client()
+    from google.cloud import bigquery
+    from google.oauth2 import service_account
+    from sqlalchemy import create_engine
 
-    query = (f'SELECT * from "ada-search-service.searchhistory_db.search_history" WHERE category = {search}')
-    job_config = bigquery.QueryJobConfig(use_legacy_sql=True)
-    query_job = client.query(query, job_config=job_config)
-    
-    # return json.dumps({'type of search': '{}'.format(type(search))})
+    credentials = service_account.Credentials.from_service_account_file("CREDENTIALS.json")
+    client = bigquery.Client(credentials=credentials)
+
     if search == 'history':
-        df = db_util.read_data_records('history_db', search)
+        query = f""" SELECT * FROM `ada-search-service.searchhistory_db.search_history`"""
+    else:
+        query = f""" SELECT * FROM `ada-search-service.searchhistory_db.auctions` WHERE category = '{search}'"""
+        requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
+
+
+    df = client.query(query).to_dataframe()
+
+    if len(df) >= 1:
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
     else:
-        requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
-        df = db_util.read_data_records('search_db', search)
-        resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
-        # requests.post(f'https://us-central1-ada-search-service.cloudfunctions.net/update_history?search={search}')
-        # store_history(search)
+        resp = json.dumps('message': 'No data found for search_term: {}'.format(search), sort_keys=False, indent=4), 200
+
     return resp
 
 
