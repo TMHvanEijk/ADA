@@ -52,7 +52,7 @@ def read_data(search):
     if len(df) >= 1:
         resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
     else:
-        resp = json.dumps('message': 'No data found for search_term: {}'.format(search), sort_keys=False, indent=4), 200
+        resp = json.dumps({'message': 'No data found for search_term: {}'.format(search)}, sort_keys=False, indent=4), 200
 
     return resp
 
