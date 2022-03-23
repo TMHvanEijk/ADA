@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e8c4496-3a74-40a8-ad24-67f0d85f571b" name="Changes" comment="Changing tag names">
-      <change beforePath="$PROJECT_DIR$/openapi/message-service-api.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/message-service-api.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="8e8c4496-3a74-40a8-ad24-67f0d85f571b" name="Changes" comment="Changing tag names" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +75,7 @@
       <workItem from="1647430229709" duration="39000" />
       <workItem from="1647430333742" duration="5904000" />
       <workItem from="1647721621690" duration="4949000" />
-      <workItem from="1647856503933" duration="1777000" />
+      <workItem from="1647856503933" duration="2489000" />
     </task>
     <task id="LOCAL-00001" summary="Changes to message service">
       <created>1647459755823</created>
@@ -142,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647954230350</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Changing tag names">
+      <created>1647954466516</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1647954466516</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
