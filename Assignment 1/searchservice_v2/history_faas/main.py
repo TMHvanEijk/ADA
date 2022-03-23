@@ -5,8 +5,10 @@ def update_history(request):
 
     table_id = "ada-search-service.searchhistory_db.search_history"
 
-    if request['search']:
-        new_search = request['search']
+    request_json = request.get_json(silent=True)
+
+    if request_json['search']:
+        new_search = request_json['search']
 
         row_to_insert = {'search':search}
         errors = client.insert_rows_json(table_id, rows_to_insert, row_ids=[None] * len(rows_to_insert))
