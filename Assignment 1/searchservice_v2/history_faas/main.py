@@ -9,7 +9,7 @@ def update_history(request):
 
     request_json = request.get_json(silent=True)
 
-    if request_json['search']:
+    if 'search' in request_json:
         new_search = request_json['search']
 
         rows_to_insert = {'search':new_search}
