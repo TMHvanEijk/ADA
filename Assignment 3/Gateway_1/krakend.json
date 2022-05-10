@@ -1,0 +1,146 @@
+{
+  "$schema": "https://www.krakend.io/schema/v3.json",
+  "version": 3,
+  "name": "KrakenD - API Gateway",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "endpoints": [
+    {
+      "endpoint": "/auctions/",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/auctions/{a_id}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/auctions/{a_id}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/auctions/{a_id}/status",
+      "method": "PUT",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "disable_host_sanitize": true,
+          "host": [
+            "http://localhost:5000/v1.0"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/bids/",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/bids/{b_id}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/bids/{b_id}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/bids/{b_id}/status",
+      "method": "PUT",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "http://localhost:5000/v1.0"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    }
+  ]
+}
