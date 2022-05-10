@@ -14,5 +14,5 @@ services:
       context: ./../accountservice
     container_name: account_service_ct
     ports:
-      - "5000:5000"
+      - "5000:5001"
   
