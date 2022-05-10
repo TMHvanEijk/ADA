@@ -19,7 +19,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -36,7 +36,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -53,7 +53,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -67,7 +67,7 @@
           "encoding": "json",
           "sd": "static",
           "method": "GET",
-          "disable_host_sanitize": true,
+          "disable_host_sanitize": false,
           "host": [
             "http://localhost:5000/v1.0"
           ]
@@ -87,7 +87,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -104,7 +104,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -121,7 +121,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     },
@@ -138,7 +138,7 @@
           "host": [
             "http://localhost:5000/v1.0"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": false
         }
       ]
     }
