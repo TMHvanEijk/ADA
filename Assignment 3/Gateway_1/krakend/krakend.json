@@ -30,7 +30,7 @@
           "sd": "static",
           "method": "POST",
           "host": [
-            "http://localhost:5000/v1.0"
+            "http://auction_service_ct:5000/v1.0"
           ],
           "disable_host_sanitize": false
         }
