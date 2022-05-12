@@ -46,12 +46,12 @@
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/",
+          "url_pattern": "/auctions/{a_id}",
           "encoding": "json",
           "sd": "static",
           "method": "GET",
           "host": [
-            "http://localhost:5000/v1.0"
+            "http://localhost:5000/"
           ],
           "disable_host_sanitize": false
         }
