@@ -38,40 +38,6 @@
       ]
     },
     {
-      "endpoint": "/auctions/{a_id}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "backend": [
-        {
-          "url_pattern": "/",
-          "encoding": "json",
-          "sd": "static",
-          "method": "GET",
-          "host": [
-            "http://localhost:5000/v1.0"
-          ],
-          "disable_host_sanitize": false
-        }
-      ]
-    },
-    {
-      "endpoint": "/auctions/{a_id}",
-      "method": "GET",
-      "output_encoding": "json",
-      "backend": [
-        {
-          "url_pattern": "/",
-          "encoding": "json",
-          "sd": "static",
-          "method": "GET",
-          "host": [
-            "http://localhost:5000/v1.0"
-          ],
-          "disable_host_sanitize": false
-        }
-      ]
-    },
-    {
       "endpoint": "/auctions/{a_id}/status",
       "method": "PUT",
       "output_encoding": "json",
