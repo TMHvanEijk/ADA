@@ -13,15 +13,15 @@
     "output_encoding": "json",
     "backend": [
       {
-        "url_pattern": "/auctions/{id}",
+        "url_pattern": "/v1.0/auctions/{id}",
         "encoding": "json",
         "method": "GET",
         "host": [
-          "http://auction_service_ct:5000/v1.0/"
+          "http://auction_service_ct:5000/"
         ],
         "disable_host_sanitize": false
       }],
-      "endpoint": "/auctions/",
+      "endpoint": "/v1.0/auctions/",
       "method": "POST",
       "output_encoding": "json",
       "backend": [
@@ -31,7 +31,7 @@
           "sd": "static",
           "method": "POST",
           "host": [
-            "http://auction_service_ct:5000/v1.0"
+            "http://auction_service_ct:5000/"
           ],
           "disable_host_sanitize": false
         }
