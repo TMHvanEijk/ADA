@@ -7,6 +7,19 @@
   "output_encoding": "json",
   "endpoints": [
     {
+    "endpoint": "/auctions/{id}",
+    "method": "GET",
+    "output_encoding": "json",
+    "backend": [
+      {
+        "url_pattern": "/auctions/{id}",
+        "encoding": "json",
+        "method": "GET",
+        "host": [
+          "http://auction_service_ct:5000/"
+        ],
+        "disable_host_sanitize": false
+      }],
       "endpoint": "/auctions/",
       "method": "POST",
       "output_encoding": "json",
