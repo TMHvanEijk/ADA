@@ -16,7 +16,7 @@
         "encoding": "json",
         "method": "GET",
         "host": [
-          "http://auction_service_ct:5000/"
+          "http://auction_service_ct:5000/v1.0/"
         ],
         "disable_host_sanitize": false
       }],
@@ -25,10 +25,10 @@
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/",
+          "url_pattern": "/auctions/",
           "encoding": "json",
           "sd": "static",
-          "method": "GET",
+          "method": "POST",
           "host": [
             "http://localhost:5000/v1.0"
           ],
