@@ -7,68 +7,69 @@
   "output_encoding": "json",
   "port": 8081,
   "endpoints": [
-  {
-    "endpoint": "/auctions/{id}",
-    "method": "GET",
-    "output_encoding": "json",
-    "backend": [
-      {
-        "url_pattern": "/v1.0/auctions/{id}",
-        "encoding": "json",
-        "method": "GET",
-        "host": [
-          "http://auction_service_ct:5000/"
-        ],
-        "disable_host_sanitize": false
-      }
-    ]
-  },
-  {
-    "endpoint": "/auctions/",
-    "method": "POST",
-    "output_encoding": "json",
-    "backend": [
-      {
-        "url_pattern": "/v1.0/auctions/",
-        "encoding": "json",
-        "method": "POST",
-        "host": [
-          "http://auction_service_ct:5000/"
-        ],
-        "disable_host_sanitize": false
-      }
-    ]
-  },
-  {
-    "endpoint": "/auctions/{id}",
-    "method": "DELETE",
-    "output_encoding": "json",
-    "backend": [
-      {
-        "url_pattern": "/v1.0/auctions/{id}",
-        "encoding": "json",
-        "method": "DELETE",
-        "host": [
-          "http://auction_service_ct:5000/"
-        ],
-        "disable_host_sanitize": false
-      }
-    ]
-  },
-  {
-    "endpoint": "/bids/",
-    "method": "POST",
-    "output_encoding": "json",
-    "backend": [
-      {
-        "url_pattern": "/v1.0/bids/",
-        "encoding": "json",
-        "method": "POST",
-        "host": [
-          "http://auction_service_ct:5000/"
-        ],
-        "disable_host_sanitize": false
-      }
-    ]
-  }
-]
+    {
+      "endpoint": "/auctions/{id}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/v1.0/auctions/{id}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/auctions/",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/v1.0/auctions/",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/auctions/{id}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/v1.0/auctions/{id}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/bids/",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/v1.0/bids/",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    }
+  ]
+}
