@@ -79,7 +79,7 @@
         {
           "url_pattern": "/v1.0/bids/{id}",
           "encoding": "json",
-          "method": "POST",
+          "method": "DELETE",
           "host": [
             "http://auction_service_ct:5000/"
           ],
@@ -89,13 +89,13 @@
     },
     {
       "endpoint": "/bids/{id}",
-      "method": "DELETE",
+      "method": "GET",
       "output_encoding": "json",
       "backend": [
         {
           "url_pattern": "/v1.0/bids/{id}",
           "encoding": "json",
-          "method": "POST",
+          "method": "GET",
           "host": [
             "http://auction_service_ct:5000/"
           ],
