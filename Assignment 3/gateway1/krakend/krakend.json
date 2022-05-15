@@ -44,6 +44,15 @@
           "mapping":{
             "auction_id":"auction"
           }
+        },
+        {
+          "url_pattern": "/v1.0/auctions/{auction}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false
         }
       ]
     },
