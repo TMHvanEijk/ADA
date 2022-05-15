@@ -46,7 +46,7 @@
           }
         },
         {
-          "url_pattern": "/v1.0/auctions/{auction}",
+          "url_pattern": "/v1.0/auctions/{resp0_auction}",
           "encoding": "json",
           "method": "DELETE",
           "host": [
