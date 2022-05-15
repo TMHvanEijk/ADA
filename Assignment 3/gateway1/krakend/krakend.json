@@ -24,7 +24,7 @@
     ]
   },
   {
-    "endpoint": "auctions/",
+    "endpoint": "/auctions/",
     "method": "POST",
     "output_encoding": "json",
     "backend": [
