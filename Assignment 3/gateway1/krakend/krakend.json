@@ -72,7 +72,7 @@
           "host": [
             "http://auction_service_ct:5000/"
           ],
-          "disable_host_sanitize": false,
+          "disable_host_sanitize": false
         },
         {
           "url_pattern": "/v1.0/bids/{resp0_bid_id}",
