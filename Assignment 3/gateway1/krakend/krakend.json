@@ -75,7 +75,7 @@
           "disable_host_sanitize": false
         },
         {
-          "url_pattern": "/v1.0/bids/{1}",
+          "url_pattern": "/v1.0/bids/{resp0_bid_id}",
           "encoding": "json",
           "method": "GET",
           "host": [
