@@ -18,7 +18,7 @@ services:
       - "5000:5000"
   message_service:
     build:
-      context: ./../message_service
+      context: ./../messageservice
     container_name: message_service_ct
     ports:
       - "5001:5000"
