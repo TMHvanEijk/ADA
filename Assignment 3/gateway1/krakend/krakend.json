@@ -58,12 +58,29 @@
     {
       "endpoint": "/bids/",
       "method": "POST",
+      "extra_config": {
+        "proxy": {
+          "sequential": true
+        }
+      },
       "output_encoding": "json",
       "backend": [
         {
           "url_pattern": "/v1.0/bids/",
           "encoding": "json",
           "method": "POST",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false,
+          "mapping": {
+            "bid_id" : "bid"
+          }
+        },
+        {
+          "url_pattern": "/v1.0/bids/{resp0_bid}",
+          "encoding": "json",
+          "method": "GET",
           "host": [
             "http://auction_service_ct:5000/"
           ],
