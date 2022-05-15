@@ -73,12 +73,9 @@
             "http://auction_service_ct:5000/"
           ],
           "disable_host_sanitize": false,
-          "mapping": {
-            "bid_id" : "bid"
-          }
         },
         {
-          "url_pattern": "/v1.0/bids/{resp0_bid}",
+          "url_pattern": "/v1.0/bids/{resp0_bid_id}",
           "encoding": "json",
           "method": "GET",
           "host": [
