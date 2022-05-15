@@ -26,12 +26,29 @@
     {
       "endpoint": "/auctions/",
       "method": "POST",
+      "extra_config": {
+        "proxy": {
+          "sequential": true
+        }
+      },
       "output_encoding": "json",
       "backend": [
         {
           "url_pattern": "/v1.0/auctions/",
           "encoding": "json",
           "method": "POST",
+          "host": [
+            "http://auction_service_ct:5000/"
+          ],
+          "disable_host_sanitize": false,
+          "mapping":{
+            "auction_id":"auction"
+          }
+        },
+        {
+          "url_pattern": "/v1.0/auctions/{resp0_auction}",
+          "encoding": "json",
+          "method": "GET",
           "host": [
             "http://auction_service_ct:5000/"
           ],
