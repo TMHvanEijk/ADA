@@ -1,0 +1,207 @@
+openapi: "3.0.0"
+info:
+  # The message service can be connected with the account service and the auction service
+  version: 1.0.0
+  title: Swagger Message Service
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:5000/v1.0
+paths:
+  /messages/{d_id}:
+    get:
+      summary: Get a Message Record
+      operationId: resources.message.Message.get
+      tags:
+        - Get a Message Record
+      parameters:
+        - name: d_id
+          in: path
+          description: Message identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Message Record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageOut"
+        '404':
+          description: Message record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Delete a Message Record
+      tags:
+        - Delete a Message Record
+      operationId: resources.message.Message.delete
+      parameters:
+        - name: d_id
+          in: path
+          description: Message Record identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Record was deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnyMsg"
+        '404':
+          description: Message record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /messages/:
+    post:
+      summary: Create a Message
+      operationId: resources.message.Message.create
+      tags:
+        - Create a Message
+      requestBody:
+        description: Message Information
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageIn"
+      responses:
+        '200':
+          description: Created Message Record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_id:
+                    type: string
+                    description: The message ID
+        '500':
+          description: Record with the same name already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /messages/{d_id}/status:
+    put:
+      summary: Update the status of a Message
+      operationId: resources.status.Status.update
+      tags:
+        - Update the status of a Message
+      parameters:
+        - name: d_id
+          in: path
+          description: Message identifier
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Message status
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnyMsg"
+        '404':
+          description: Record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    MessageIn:
+      required:
+        - receiver_id
+        - sender_id
+        - context
+      properties:
+        receiver_id:
+          format: string
+        sender_id:
+          format: string
+        context:
+          format: string
+        send_time:
+          format: string
+    MessageOut:
+      required:
+        - id
+      properties:
+        id:
+          type: number
+        receiver_id:
+          format: string
+        sender_id:
+          format: string
+        context:
+          format: string
+        status:
+          $ref: "#/components/schemas/Status"
+    Status:
+      properties:
+        status:
+          type: string
+        last_update:
+          type: string
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string
+    AnyMsg:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string

@@ -1,0 +1,21 @@
+version: '3.9'
+services:  
+  auction_service:
+    build:
+      context: ./auctionservice
+    container_name: auction_service_ct
+    ports:
+      - "5000:5000"
+  message_service:
+    build:
+      context: ./messageservice
+    container_name: message_service_ct
+    ports:
+      - "5001:5000"
+  search_service:
+    build:
+      context: ./searchservice_v2
+    container_name: search_service_ct
+    ports:
+      - "5002:5000"
+
