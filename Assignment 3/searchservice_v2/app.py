@@ -8,7 +8,7 @@ app.config["DEBUG"] = True
 
 @app.route('/searchservice/<search>', methods=['GET'])
 def read_data(search):
-    fake_db = {1:['Car_1', 'Car_2','Car_3'], 2:['Laptop_1', 'Laptop_2']}
+    fake_db = {"1":['Car_1', 'Car_2','Car_3'], "1":['Laptop_1', 'Laptop_2']}
     # from google.cloud import bigquery
     # from google.oauth2 import service_account
     # from sqlalchemy import create_engine
