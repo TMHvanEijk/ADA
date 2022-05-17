@@ -8,6 +8,7 @@ services:
     depends_on:
       - auction_service
       - message_service
+      - search_service
     ports:
       - "8080:8081"
   auction_service:
@@ -22,5 +23,10 @@ services:
     container_name: message_service_ct
     ports:
       - "5001:5000"
+  search_service:
+    build:
+      context: ./../searchservice_v2
+    container_name: search_service_ct
+    ports: "5002:5000"
 
   
