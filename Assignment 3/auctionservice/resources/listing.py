@@ -28,7 +28,7 @@ class Listing:
         if auction:
             status_obj = auction.status
             text_out = {
-                "seller_id:": auction.seller_id,
+                "seller_id": auction.seller_id,
                 "category_id": auction.category_id,
                 "starting_price": auction.starting_price,
                 "status": {
