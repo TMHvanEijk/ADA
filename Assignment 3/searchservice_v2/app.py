@@ -33,8 +33,8 @@ def read_data(search):
     # else:
     # resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200    
     
-    resp = json.dumps({'Related auction': fake_db[search]})
-    return resp
+    resp2 = json.dumps({'Related auction': fake_db[search]})
+    return resp2
 
 
 app.run(host='0.0.0.0', port=5000)
