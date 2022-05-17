@@ -31,9 +31,9 @@ def read_data(search):
     #     if search != 'history':
     #         requests.post('https://us-central1-ada-search-service.cloudfunctions.net/update_history', json={"search":search})
     # else:
-    #     resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200    
-    resp = json.dumps(fake_db[search])
-    # return resp
+    resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200    
+    # resp = json.dumps(fake_db[search])
+    return resp
 
 
 app.run(host='0.0.0.0', port=5000)
