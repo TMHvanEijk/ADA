@@ -89,11 +89,6 @@
     {
       "endpoint": "/auctions/",
       "method": "POST",
-      "extra_config": {
-        "proxy": {
-          "sequential": true
-        }
-      },
       "output_encoding": "json",
       "backend": [
         {
