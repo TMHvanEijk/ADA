@@ -16,7 +16,7 @@
       ],
       "backend": [
         {
-          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/related-auctions/executions",
+          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/related-auctions-gate/executions",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -35,7 +35,7 @@
         ],
       "backend": [
         {
-          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/related-auctions/executions/{eid}",
+          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/related-auctions-gate/executions/{eid}",
           "encoding": "json",
           "method": "GET",
           "host": [
