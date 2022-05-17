@@ -33,7 +33,7 @@ def read_data(search):
     # else:
     # resp = json.dumps({'message': 'No data found for search term: {}'.format(search)}, sort_keys=False, indent=4), 200    
     
-    resp = json.dumps(fake_db[search])
+    resp = fake_db[search]
     return resp
 
 
