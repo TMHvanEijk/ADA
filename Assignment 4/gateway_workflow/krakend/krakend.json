@@ -9,7 +9,7 @@
   "endpoints": [
     {
       "endpoint": "/view_auction",
-      "method": "GET",
+      "method": "POST",
       "output_encoding": "json",
          "input_headers": [
             "Authorization"
