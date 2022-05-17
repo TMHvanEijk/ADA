@@ -12,7 +12,7 @@ services:
     container_name: message_service_ct
     ports:
       - "5001:5000"
-  message_service:
+  search_service:
     build:
       context: ./searchservice_v2
     container_name: search_service_ct
