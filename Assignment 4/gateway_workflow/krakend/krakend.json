@@ -57,7 +57,7 @@
       ],
       "backend": [
         {
-          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/auction-bid-message/executions",
+          "url_pattern": "/v1/projects/ada-search-service/locations/us-central1/workflows/automatic-bid-message/executions",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -76,7 +76,7 @@
         ],
       "backend": [
         {
-          "url_pattern": "/v1/projects/aada-search-service/locations/us-central1/workflows/auction-bid-message/executions/{eid}",
+          "url_pattern": "/v1/projects/aada-search-service/locations/us-central1/workflows/automatic-bid-message/executions/{eid}",
           "encoding": "json",
           "method": "GET",
           "host": [
