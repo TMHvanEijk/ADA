@@ -1,0 +1,47 @@
+main:
+    params: [args]
+    steps:
+        - getAuction:
+            call: http.get
+            args: 
+                url: ${"http://34.121.114.212:5000/v1.0/auctions/" + string(args.auction_id)}
+            result: Auction
+            next: conditionalOnBid
+        - conditionalOnBid:
+            switch:
+                - condition:  ${args.bid_amount < Auction.body.starting_price}
+                  steps: 
+                    - returnBidProblem:
+                        return: ${"Your bid ("+ string(args.bid_amount)+") did not meet the minimum starting bid of "+ string(Auction.body.starting_price) +" Euros."}
+                  next: buildBody
+        - buildBody:
+            assign:
+                - senderID: ${string(args.buyer_id)}
+                - receiverID: ${Auction.body.seller_id}
+                - mapBody: {"context":"hello", "send_time":"2022-03-15 08:15:27.243860"}
+                - mapBody["receiver_id"]: ${receiverID}
+                - mapBody["sender_id"]: ${senderID}   
+            next: placeBid
+        - placeBid:
+            call: http.post
+            args:
+                url: ${"http://34.121.114.212:5000/v1.0/bids/"}
+                body:
+                    "buyer_id": ${args.buyer_id}
+                    "bid_amount": ${args.bid_amount}
+                    "auction_id": ${args.auction_id}
+            result: Bid
+            next: startConversation
+        - startConversation:
+            call: http.post
+            args: 
+                url: ${"http://34.121.114.212:5001/v1.0/messages/"}
+                body: 
+                    "context": ${"Bidder " + string(args.buyer_id) + " has placed a bid of "+ string(args.bid_amount) + " on your auction."}
+                    "receiver_id": ${receiverID}
+                    "send_time": "2022-03-15 08:15:27.243860"
+                    "sender_id": ${senderID}
+            result: Message
+            next: returnMessage
+        - returnMessage:
+            return: ${[Bid.body, Message.body]}

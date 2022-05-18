@@ -1,0 +1,21 @@
+main:
+    params: [args]
+    steps:
+    - assignURL:
+        assign: 
+            - GetAuctionURL:  ${"http://34.121.114.212:5000/v1.0/auctions/" + args.ID}
+        next: viewauctions
+    - viewauctions:
+        call: http.get
+        args: 
+            url: ${GetAuctionURL}
+        result: Auction
+        next: retrieveSimilar
+    - retrieveSimilar:
+        call: http.get
+        args: 
+            url: ${"http://34.121.114.212:5002/searchservice/" + Auction.body.category_id}
+        result: Similar
+        next: returnAuction
+    - returnAuction:
+        return: ${[Auction.body, Similar.body]}
